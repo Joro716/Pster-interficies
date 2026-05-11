@@ -47,6 +47,21 @@
             font-weight: bold;
         }
 
+        /* Bloque de logos principales */
+        .image-row {
+            display: flex;
+            gap: 18px;
+            justify-content: center;
+            align-items: center;
+            margin-top: 8px;
+            flex-wrap: wrap;
+        }
+        .logo {
+            max-height: 24mm;
+            width: auto;
+            filter: drop-shadow(0 1px 0 rgba(0,0,0,0.05));
+        }
+
         .grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -98,6 +113,54 @@
             font-size: 9.5pt;
         }
 
+        /* Galería de imágenes y figuras */
+        .figure-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            margin-top: 6px;
+        }
+        .figure {
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 6px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .figure img {
+            max-height: 28mm;
+            width: 100%;
+            object-fit: contain;
+        }
+        .figcaption {
+            font-size: 8pt;
+            color: #4a5568;
+            margin-top: 4px;
+            text-align: center;
+        }
+
+        /* Iconografía SVG ligera */
+        .icon-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            margin-top: 6px;
+        }
+        .icon-card {
+            background: #edf2f7;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 8px;
+            text-align: center;
+        }
+        .icon-card svg {
+            height: 22mm;
+            width: 100%;
+        }
+
         footer {
             margin-top: 10px;
             padding-top: 8px;
@@ -130,6 +193,11 @@
     <header>
         <h1>Distribució per Smart TV</h1>
         <div class="tagline">TEMA 5: Tizen OS i webOS</div>
+            <div class="image-row" aria-label="Logos de plataformes">
+                <!-- Enllaços oficials de logos (Wikimedia/llocs corporatius amb llicència oberta) -->
+                <img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/5/5c/WebOS_Logo.svg" alt="Logotip webOS" />
+                <img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/1/1a/Tizen_logo.png" alt="Logotip Tizen" />
+            </div>
     </header>
 
     <div class="grid">
@@ -139,10 +207,18 @@
                 <div style="flex: 1;">
                     <h3>Tizen Studio (Samsung)</h3>
                     <p>Entorn basat en Eclipse per a aplicacions Web (HTML/JS) i Natives (C++). Proporciona emuladors, eines de depuració i gestió de certificats.</p>
+                        <div class="figure">
+                            <img src="img\Tizen-Lockup-On-Light-RGB.png" alt="Tizen Studio" />
+                            <div class="figcaption">Tizen Studio i ecosistema</div>
+                        </div>
                 </div>
                 <div style="flex: 1;">
                     <h3>webOS TV SDK (LG)</h3>
                     <p>Conjunt d'eines modulars que inclouen CLI i extensions per a VS Code. Utilitza el framework <strong>Enact</strong> basat en React per a la interfície.</p>
+                        <div class="figure">
+                            <img src="img\LG_WebOS_New.svg.png" alt="webOS TV SDK" />
+                            <div class="figcaption">webOS TV SDK + Enact (React)</div>
+                        </div>
                 </div>
             </div>
         </div>
@@ -156,6 +232,35 @@
                 <li><strong>Certificat de Distribuïdor:</strong> Autorització necessària del fabricant per a l'execució en hardware real.</li>
             </ul>
             <p>La comanda <code>tizen package</code> genera el binari incloent tota la lògica web i el fitxer de configuració del manifest.</p>
+                <div class="icon-row">
+                    <div class="icon-card" aria-label="Paquet">
+                        <!-- Paquet / arxiu -->
+                        <svg viewBox="0 0 64 64" role="img" aria-label="paquet">
+                            <path fill="#2b6cb0" d="M8 20l24-12 24 12v24L32 56 8 44z" opacity="0.2"/>
+                            <path fill="#4299e1" d="M32 8L8 20l24 12 24-12z"/>
+                            <path fill="#2c5282" d="M8 20v24l24 12V32z"/>
+                            <path fill="#3182ce" d="M56 20v24L32 56V32z"/>
+                        </svg>
+                        <div class="figcaption">Paquet .wgt</div>
+                    </div>
+                    <div class="icon-card" aria-label="Certificat">
+                        <!-- Escut / certificat -->
+                        <svg viewBox="0 0 64 64" role="img" aria-label="certificat">
+                            <path fill="#2c5282" d="M32 6l18 6v16c0 12-8 22-18 26-10-4-18-14-18-26V12z"/>
+                            <circle cx="32" cy="28" r="10" fill="#ebf8ff"/>
+                            <path fill="#63b3ed" d="M24 52l8 4 8-4 4 10-12-4-12 4z"/>
+                        </svg>
+                        <div class="figcaption">Signatura i confiança</div>
+                    </div>
+                    <div class="icon-card" aria-label="CLI">
+                        <!-- Terminal -->
+                        <svg viewBox="0 0 64 64" role="img" aria-label="terminal">
+                            <rect x="6" y="10" width="52" height="44" rx="4" fill="#1a365d"/>
+                            <path stroke="#edf2f7" stroke-width="3" d="M16 24l8 8-8 8M30 40h18"/>
+                        </svg>
+                        <div class="figcaption">Tizen CLI</div>
+                    </div>
+                </div>
         </div>
 
         <div class="card">
@@ -166,6 +271,38 @@
                 <li><strong>Remote Debugging:</strong> Depuració des de l'IDE directament sobre la televisió física.</li>
                 <li><strong>Cicle de Vida:</strong> Verificació de la gestió de memòria per evitar tancaments inesperats.</li>
             </ul>
+                <div class="icon-row">
+                    <div class="icon-card" aria-label="D-Pad">
+                        <svg viewBox="0 0 64 64" role="img" aria-label="dpad">
+                            <circle cx="32" cy="32" r="22" fill="#2d3748"/>
+                            <path fill="#e2e8f0" d="M30 18h4v12h12v4H34v12h-4V34H18v-4h12z"/>
+                        </svg>
+                        <div class="figcaption">D‑Pad i focus</div>
+                    </div>
+                    <div class="icon-card" aria-label="Debug">
+                        <svg viewBox="0 0 64 64" role="img" aria-label="debug">
+                            <rect x="10" y="12" width="44" height="30" rx="4" fill="#2b6cb0"/>
+                            <path stroke="#ebf8ff" stroke-width="3" d="M18 36l8-10 6 6 8-12 6 8"/>
+                            <rect x="16" y="46" width="32" height="6" rx="3" fill="#4a5568"/>
+                        </svg>
+                        <div class="figcaption">Remote debugging</div>
+                    </div>
+                    <div class="icon-card" aria-label="Memòria">
+                        <svg viewBox="0 0 64 64" role="img" aria-label="memoria">
+                            <rect x="10" y="18" width="44" height="28" rx="3" fill="#2c5282"/>
+                            <rect x="16" y="24" width="32" height="16" fill="#bee3f8"/>
+                            <g fill="#2c5282">
+                                <rect x="12" y="14" width="4" height="6"/>
+                                <rect x="20" y="14" width="4" height="6"/>
+                                <rect x="28" y="14" width="4" height="6"/>
+                                <rect x="36" y="14" width="4" height="6"/>
+                                <rect x="44" y="14" width="4" height="6"/>
+                                <rect x="52" y="14" width="4" height="6"/>
+                            </g>
+                        </svg>
+                        <div class="figcaption">Gestió de memòria</div>
+                    </div>
+                </div>
         </div>
 
         <div class="card full-width">
@@ -189,6 +326,32 @@
         <div class="card full-width">
             <h2>Demostració de Deploy</h2>
             <p>Integració mitjançant el <strong>Device Manager</strong> per a la detecció del dispositiu i instal·lació directa des de l'estació de treball cap a la Smart TV.</p>
+                <div class="figure-grid" aria-label="Flux de deploy">
+                    <div class="figure">
+                        <svg viewBox="0 0 200 110" role="img" aria-label="IDE a dispositiu">
+                            <rect x="6" y="8" width="188" height="96" rx="10" fill="#edf2f7" stroke="#cbd5e0"/>
+                            <rect x="16" y="18" width="70" height="50" rx="6" fill="#2b6cb0"/>
+                            <rect x="114" y="18" width="70" height="50" rx="6" fill="#2c5282"/>
+                            <path d="M86 43h28" stroke="#2d3748" stroke-width="3" marker-end="url(#arr)"/>
+                            <defs>
+                                <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                                    <path d="M0 0 L10 5 L0 10 z" fill="#2d3748"/>
+                                </marker>
+                            </defs>
+                            <text x="51" y="77" text-anchor="middle" font-family="Segoe UI" font-size="10" fill="#1a365d">IDE</text>
+                            <text x="149" y="77" text-anchor="middle" font-family="Segoe UI" font-size="10" fill="#1a365d">Smart TV</text>
+                        </svg>
+                        <div class="figcaption">Deploy local → TV</div>
+                    </div>
+                    <div class="figure">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/1/1a/Tizen_logo.png" alt="Tizen" />
+                        <div class="figcaption">Device Manager (Tizen)</div>
+                    </div>
+                    <div class="figure">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/5/5c/WebOS_Logo.svg" alt="webOS" />
+                        <div class="figcaption">webOS CLI + Dev Mode</div>
+                    </div>
+                </div>
         </div>
     </div>
 
@@ -200,7 +363,7 @@
         </div>
         <div class="qr-section">
             <div class="qr-placeholder">
-                <img src="https://api.qrserver.com/v1/create-qr-code/?size=70x70&data=https://developer.samsung.com/tv" alt="QR">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=70x70&data=https://webostv.developer.lge.com" alt="QR LG">
             </div>
         </div>
     </footer>
