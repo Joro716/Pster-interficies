@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <title>Pòster: Distribució Smart TV</title>
+    <style>
+        /* Ajustes estrictos para una sola página A4 */
+        @page {
+            size: A4;
+            margin: 0;
+        }
+        body {
+            margin: 0;
+            padding: 8mm;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f7ff;
+            color: #1a365d;
+        }
+        .poster {
+            width: 194mm;
+            height: 281mm;
+            background-color: #ffffff;
+            border: 5px solid #2b6cb0;
+            padding: 8mm;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            text-align: center;
+            background-color: #2c5282;
+            color: white;
+            padding: 18px;
+            margin: -8mm -8mm 15px -8mm;
+        }
+        h1 {
+            margin: 0;
+            font-size: 22pt;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+        }
+        .tagline {
+            font-size: 11pt;
+            opacity: 0.9;
+            margin-top: 5px;
+            font-weight: bold;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            flex-grow: 1;
+        }
+        .card {
+            border: 1px solid #bee3f8;
+            border-radius: 10px;
+            padding: 10px;
+            background-color: #f7fafc;
+            border-top: 4px solid #4299e1;
+        }
+        .full-width {
+            grid-column: span 2;
+        }
+        h2 {
+            color: #2c5282;
+            font-size: 14pt;
+            margin: 0 0 8px 0;
+            display: flex;
+            align-items: center;
+        }
+        h3 {
+            font-size: 10pt;
+            color: #2b6cb0;
+            margin: 8px 0 4px 0;
+            text-transform: uppercase;
+            border-bottom: 1px solid #cbd5e0;
+        }
+        p, li {
+            font-size: 9.2pt;
+            line-height: 1.25;
+            margin: 3px 0;
+        }
+        ul {
+            padding-left: 18px;
+            margin: 5px 0;
+        }
+
+        .highlight {
+            background-color: #2c5282;
+            color: white;
+            padding: 10px;
+            border-radius: 6px;
+            font-style: italic;
+            text-align: center;
+            margin-top: 8px;
+            font-size: 9.5pt;
+        }
+
+        footer {
+            margin-top: 10px;
+            padding-top: 8px;
+            border-top: 2px solid #2c5282;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .footer-info {
+            font-size: 8.5pt;
+            color: #2d3748;
+        }
+        .qr-section {
+            text-align: center;
+        }
+        .qr-placeholder {
+            width: 55px;
+            height: 55px;
+            background-color: #edf2f7;
+            border: 1px solid #cbd5e0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+        }
+    </style></head>
+<body>
+
+<div class="poster">
+    <header>
+        <h1>Distribució per Smart TV</h1>
+        <div class="tagline">TEMA 5: Tizen OS i webOS</div>
+    </header>
+
+    <div class="grid">
+        <div class="card full-width">
+            <h2>Entorns de Desenvolupament</h2>
+            <div style="display: flex; gap: 30px;">
+                <div style="flex: 1;">
+                    <h3>Tizen Studio (Samsung)</h3>
+                    <p>Entorn basat en Eclipse per a aplicacions Web (HTML/JS) i Natives (C++). Proporciona emuladors, eines de depuració i gestió de certificats.</p>
+                </div>
+                <div style="flex: 1;">
+                    <h3>webOS TV SDK (LG)</h3>
+                    <p>Conjunt d'eines modulars que inclouen CLI i extensions per a VS Code. Utilitza el framework <strong>Enact</strong> basat en React per a la interfície.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Generació de Paquets</h2>
+            <p>L'estudi se centra en l'ús de <strong>Tizen CLI</strong> per a l'empaquetat final del programari.</p>
+            <h3>Signatura Digital (.wgt)</h3>
+            <ul>
+                <li><strong>Certificat d'Autor:</strong> Garanteix la identitat del creador.</li>
+                <li><strong>Certificat de Distribuïdor:</strong> Autorització necessària del fabricant per a l'execució en hardware real.</li>
+            </ul>
+            <p>La comanda <code>tizen package</code> genera el binari incloent tota la lògica web i el fitxer de configuració del manifest.</p>
+        </div>
+
+        <div class="card">
+            <h2>Estratègia de Proves (QA)</h2>
+            <p>Les limitacions de memòria i processament fan que el control de qualitat sigui essencial.</p>
+            <ul>
+                <li><strong>Navegació D-Pad:</strong> Validació del focus visual mitjançant el comandament a distància.</li>
+                <li><strong>Remote Debugging:</strong> Depuració des de l'IDE directament sobre la televisió física.</li>
+                <li><strong>Cicle de Vida:</strong> Verificació de la gestió de memòria per evitar tancaments inesperats.</li>
+            </ul>
+        </div>
+
+        <div class="card full-width">
+            <h2>Distribució i Validació</h2>
+            <div style="display: flex; gap: 30px;">
+                <div style="flex: 1;">
+                    <h3>Portals de Publicació</h3>
+                    <p><strong>Samsung:</strong> Seller Office.</p>
+                    <p><strong>LG:</strong> Developer Console.</p>
+                </div>
+                <div style="flex: 1;">
+                    <h3>Criteris d'Aceptació</h3>
+                    <p>L'aplicació ha de carregar en menys de 10 segons i complir estrictes protocols de seguretat i usabilitat web.</p>
+                </div>
+            </div>
+            <div class="highlight">
+                "L'adaptació de la interfície al comandament i la rigidesa dels certificats són els veritables reptes del desenvolupador."
+            </div>
+        </div>
+
+        <div class="card full-width">
+            <h2>Demostració de Deploy</h2>
+            <p>Integració mitjançant el <strong>Device Manager</strong> per a la detecció del dispositiu i instal·lació directa des de l'estació de treball cap a la Smart TV.</p>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-info">
+            <strong>M07 - Desenvolupament d'Interfícies (DAM)</strong><br>
+            Projecte Puzzle - Fase 2: Grups Mixtos<br>
+            <em>Llicència: Creative Commons BY-NC 4.0</em>
+        </div>
+        <div class="qr-section">
+            <div class="qr-placeholder">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=70x70&data=https://developer.samsung.com/tv" alt="QR">
+            </div>
+        </div>
+    </footer>
+</div>
+
+</body>
+</html>
